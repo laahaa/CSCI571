@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<style type="text/css">
+			body{
+				text-align: center;
+			}
+			input.submit{
+				margin-top: 15px;
+				background-color: rgb(239,239,239);
+			}
+		</style>
+		<script type="text/javascript">
+			function viewXML (urlname) {
+				var errorType = 0;// to handle errors..
+				var URL = urlname.URL.value;
+				var isExist = document.readyState;
+					if (URL=="") {
+						errorType = 1; //no input
+						alert("No xml files are input");
+						return;
+					}
+				var xmlDoc;
+				function loadXML(url) { //api in of hint1
+					if (window.XMLHttpRequest) {// code for IE7+, Firefox, Chrome, Opera, Safari
+						xmlhttp = new XMLHttpRequest();
+					}
+					 else {// code for IE6, IE5
+    					xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");  
+    				}
+					xmlhttp.open("GET",url,false); //false for synchronus  !change url..
+					xmlhttp.send();
+
+					if (xmlhttp.status ==404) {
+						errorType = 4;
+						alert("XML file does not exist");
+					} //only for server testing
+
+					xmlDoc=xmlhttp.responseXML;
+
+					return xmlDoc;  
+				}
+
+				xmlDoc = loadXML(URL);
+
+				if(xmlDoc.documentElement.nodeName == "parsererror"){
+					errorType = 2;
+					alert("Error in XML file");
+					return;
+				}//file is invalid
+
+				if(errorType == 0) {
+					xmlDoc = generateHTML(xmlDoc);
+				}				
+			}
+			function is_all_ws( nod ){
+			  // Use ECMA-262 Edition 3 String and RegExp features
+			  return !(/[^\t\n\r ]/.test(nod.textContent));
+			}
+			function is_ignorable( nod ){
+			  return ( nod.nodeType == 8) || // A comment node
+			         ( (nod.nodeType == 3) && is_all_ws(nod) ); // a text node, all ws
+			}
+			function deletespace(str){
+				return str.replace(/^\s+|\s+$/g, '');
+			}//using for space in textnode
+			function generateHTML(xmlDoc){ //generate HTML!
+				var companies = xmlDoc.getElementsByTagName("Row"); //three companies
+			   	if (companies.length == 0) { //no company entries..
+			   		errorType = 3;
+			   		alert("Error : No cable network companies");
+			   		return;
+			   	}
+				var newtable = window.open("","","scrollbars = yes","width=1200","height=800");//mind the scrollbar
+				ELEMENT_NODE = 1;  //node type 
+			   	var root = xmlDoc.DocumentElement; //return root node
+			   	newtable.document.write("<!DOCTYPE html>\n<html><head></head>\n<body>\n");
+			   	newtable.document.write("<table border='3'>\n");
+			   	var content = xmlDoc.getElementsByTagName("Table");
+			   	var column = xmlDoc.getElementsByTagName("Header")[0];
+			   	newtable.document.write("<thead>\n");
+			   	newtable.document.write("<tr>\n");
+			   	var dataList = column.childNodes; //item(0)
+			   	for (var i =0; i<dataList.length; i++){ //length.. =13 skip all whitespace
+			   		if (!is_ignorable(dataList[i])) {
+			   			newtable.document.write("<th>" + dataList[i].childNodes[0].nodeValue + "</th>");
+			   		}
+			   	}
+			   	newtable.document.write("</tr>\n");
+			   	newtable.document.write("</thead>\n");
+			   	newtable.document.write("<tbody>\n");
+			   	
+			   	for (var j = 0; j < 3; j++) {
+			   		var abc = companies.item(j).childNodes;
+			   		newtable.document.write("<tr>");
+					for (var i = 0; i < dataList.length; i++) {
+						if (!is_ignorable(abc[i])) {
+							if (abc[i].nodeName == "Feeds") {
+								var feed = abc[i].childNodes;
+								newtable.document.write("<th><ul>\n");
+								for (var k = 0; k<feed.length; k++) {
+									if (!is_ignorable(feed[k])){ //only<Feed>tags 
+										if(feed[k].hasChildNodes()){//feed is empty..
+											var validFeed = deletespace(feed[k].childNodes[0].nodeValue);
+											if (validFeed != "") {
+												newtable.document.write("<li>"+validFeed+"</li>");
+											}
+										}
+									}
+								}
+								newtable.document.write("</ul></th>\n");	
+							}
+							else if (abc[i].nodeName == "Logo") {
+								if (!is_ignorable(abc[i])) {
+									if (abc[i].hasChildNodes()) {
+										var validLogo = deletespace(abc[i].childNodes[0].nodeValue);
+										if (validLogo != "") {
+											newtable.document.write("<th><img src="+ validLogo +" /></th>");
+										}
+										else{
+											newtable.document.write("<th>"+ " " +"</th>");
+										}
+									}
+									else{
+										newtable.document.write("<th>"+ " " +"</th>");
+									}
+								}	
+							}
+							else if (abc[i].nodeName == "HomePage") {
+								if (!is_ignorable(abc[i])) {
+									if (abc[i].hasChildNodes()) {
+										validHomePage = deletespace(abc[i].childNodes[0].nodeValue);
+										if (validHomePage != "") {
+											newtable.document.write("<th><a href='"+abc[i].childNodes[0].nodeValue+"'>"+abc[i].childNodes[0].nodeValue+"</a></th>\n");
+										}
+										else{
+											newtable.document.write("<th>"+" "+"</th>\n");
+										}	
+									}
+									else{
+										newtable.document.write("<th>"+ " " +"</th>");
+									}
+								}	
+							}
+							else{
+								if (!is_ignorable(abc[i])) {
+									if (abc[i].hasChildNodes()) {
+										validTag = deletespace(abc[i].childNodes[0].nodeValue);
+										if (validTag != "") {
+											newtable.document.write("<th>"+ abc[i].childNodes[0].nodeValue +"</th>\n");
+										}
+										else{
+											newtable.document.write("<th>"+ " " +"</th>\n");
+										}
+									}
+									else{
+										newtable.document.write("<th>"+ " " +"</th>\n");
+									}
+								}
+							}
+						}
+					}
+					newtable.document.write("</tr>");
+				}
+			   	newtable.document.write("</tbody>");
+			   	newtable.document.write("</table>\n");
+			   	newtable.document.write("</bo"+"dy>\n</html>");
+        	}
+        	document.close();
+		</script>	
+	</head>
+	<body>	
+		<p>Enter URL for Company List XML File</p>
+		<form name="myform" method="POST" id="location">
+		<input type="text" name="URL" maxlength="255" size="36" value="" />
+		<br />
+		<input class="submit" type="button" name="submit" value="Submit Query" onClick="viewXML(this.form)" />
+		</form>
+		<noscript>
+	</body>
+</html>
