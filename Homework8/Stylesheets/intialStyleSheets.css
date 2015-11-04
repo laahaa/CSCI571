@@ -1,0 +1,74 @@
+body{
+    background-image: url("http://cs-server.usc.edu:45678/hw/hw8/images/bg.jpg");
+    background-repeat: no-repeat;
+    background-size: 100%;
+    background-attachment: fixed;
+}
+div#Header{
+    margin-top: 84px;
+    margin-bottom: 32px;
+}
+div#DivContentID{
+    background: rgba(79,79,79,0.44);
+    padding-left: 15px;
+    padding-right: 15px;
+}
+div#DivStreetAddress,#DivCity,#DivState{
+    padding-left: 1px;
+    padding-right: 1px;
+}
+label#StreetAddressID,#CityID,#StateID,#DegreeID{
+    margin-bottom: 0px;
+    margin-top: 10px;
+    color: white;
+}
+span#SpanStreetAddress,#SpanCity,#SpanState{
+    margin-top: 0px;
+    font-size: 12px;
+    font-weight: bold;
+}
+div#DegreeButtonID{
+    color: white;
+    padding-top: 15px;
+    padding-left: 6px;
+}
+div#DivTwoButtonsID{
+    padding-top: 28px;
+    padding-left: 0px;
+    padding-right: 0px;
+}
+div#DivSearchClearID{
+    padding-left: 15px;
+}
+button#ClearButtonID{
+    width: 93px;
+    text-align: justify;
+}
+span#ClearButtonTextID{
+    margin-right: 22px;
+}
+div#DivPoweredByID{
+    padding-left: 0px;
+    padding-right: 0px;
+    padding-top: 25px;
+    text-align: right;
+}
+p#PoweredID{
+    font-size: small;
+    color: white;
+}
+div#DivForecastLocalID{
+    padding-left: 3px;
+    padding-right: 0px;
+    padding-top: 5px;
+    padding-bottom: 20px;
+}
+img#ForecastLogoID{
+    width: 112px;
+    height: 56px;
+}
+
+
+
+
+
