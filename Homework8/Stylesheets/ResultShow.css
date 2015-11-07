@@ -1,0 +1,78 @@
+div#DivResultID{
+    padding-left: 0px;
+    padding-right: 0px;
+}
+div#DivRightNowL6ID{
+    padding-right: 0px;
+}
+div#DivMapR6ID{
+    padding-left: 0px;
+}
+ul.nav-tabs > li{
+    background-color: rgb(238,238,238);
+    margin-right: 2px;
+    border-radius: 7%;
+    margin-bottom: -1px;
+}
+ul.nav-tabs li.active a{
+    background-color: rgb(48,113,169);
+    border: solid 1px white;
+    color: white;
+}
+
+div#DivIconAndWeatherID{
+    background-color: rgb(242,126,127);
+    margin-left: 0px;
+    margin-right: 0px;
+}
+div#DivIconID{
+    padding-top: 15px;
+    padding-bottom: 15px;
+    vertical-align: middle;
+    text-align: center;
+}
+img#DisplayedIconID{
+    width: 50%;
+}
+div#Div3PartsID{
+    text-align: center;
+}
+p#PWeatherConditionID{
+    color: white;
+    font-weight: bold;
+}
+div#Div3MiddleID{
+    text-align: center;
+    vertical-align: text-top;
+}
+div#Div3MiddleID span{
+    position: relative;
+    top: -27px;
+    right: 0px;
+}
+p#P3MiddleID{
+    color: white;
+}
+b#BigNumberID{
+    font-size: 55px;
+}
+td.leftTd{
+    width: 50%;
+}
+
+div#DivNext24HoursTabID {
+    padding-left: 0px;
+    padding-right: 0px;
+    background-color: white;
+    text-align: center;
+}
+
+tr#Thead24TableID{
+    background-color: rgb(48,113,169);
+    color: white;
+}
+th{
+    text-align: center;
+}
+
+

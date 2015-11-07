@@ -23,13 +23,8 @@
     $xmlFile = simplexml_load_string($urlContent);
     $latitude = $xmlFile->result->geometry->location->lat;
     $longitude = $xmlFile->result->geometry->location->lng;
-
     $forecastURL = "https://api.forecast.io/forecast/9a62281bfd08a550fd42ac58f6419c86/$latitude,$longitude?units=$units_value&exclude=flags";
     $forecastURLContent = file_get_contents($forecastURL);
-
     $forecastJson = json_encode($forecastURLContent); //in HW6 is decode..
-
-//    echo $latitude;
     echo ($forecastJson);
-//    echo json file..
 ?>
