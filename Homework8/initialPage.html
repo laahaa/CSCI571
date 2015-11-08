@@ -8,7 +8,10 @@
         <link rel="stylesheet" type="text/css" href="Stylesheets/intialStyleSheets.css">
         <link rel="stylesheet" type="text/css" href="Stylesheets/ErrorMessage.css">
         <link rel="stylesheet" type="text/css" href="Stylesheets/ResultShow.css">
-        <script src="Scripts/jquery-1.11.2.min.js"></script>
+
+        <!--<script src="Scripts/jquery-2.1.4.js"></script>-->
+        <script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+
         <script type="text/javascript" src="Scripts/jquery.validate.js"></script>
         <script type="text/javascript" src="Scripts/MyValidation.js"></script>
         <script type="text/javascript" src="Stylesheets/bootstrap/js/bootstrap.min.js"></script>
@@ -130,20 +133,8 @@
         </div>
 
 <!--all fake html-->
-    <div class="container">
-        <div class="row">
-            <div class='col-md-6'>
-                  Right Now Table 右边地图组加油 ->
-            </div>
-            <div class='col-md-6'>
-                test1
-            </div>
-        </div>
-    </div>
-
 
 <div class="container">
-
             <ul class='nav nav-tabs' role='tablist'>
                 <li role='presentation'>
                     <a href='#RightNow' role='tab' aria-controls='Right Now' data-toggle='tab'>Right Now</a>
@@ -156,13 +147,13 @@
                 </li>
             </ul>
 
-            <div class='row'>
-                <div class='col-md-6'>
+            <!--<div class='row'>-->
+                <!--<div class='col-md-6'>-->
 
             <div class='tab-content container' id="DivNext24HoursTabID">
                 <div role='tabpanel' class='tab-pane active' id='Next24Hours'>
                     <table class="table table-responsive" id="Table24HoursID">
-                        <thead>
+                        <thead id='Thead24HourID'>
                             <tr id="Thead24TableID">
                                 <th class="headFor24">
                                     Time
@@ -180,8 +171,16 @@
                                     View Details
                                 </th>
                             </tr>
+                            <tr name='DivideTheadAndTbody'>
+                                <td>
+                                    <div>
+
+                                    </div>
+                                </td>
+                            </tr>
                         </thead>
-                        <tbody>
+
+                        <tbody id="TbodyBiggerID">
                             <tr>
                                 <td>
                                     10:00 PM
@@ -196,7 +195,105 @@
                                     70.28
                                 </td>
                                 <td>
-                                    <a data-toggle="collapse" aria-expanded="false"><span class="glyphicon glyphicon-plus"></span></a>
+                                    <a href="#collapseOne" data-toggle="collapse" aria-expanded="false"><span class="glyphicon glyphicon-plus"></span></a>
+                                </td>
+                            </tr>
+                                <tr id='collapseOne' class="collapse out">
+                                    <td id="TdCollapseID" colspan="5">
+                                        <div class="collapsePart" id="DivCollapsePart">
+                                            <table id="TableCollapseResponsiveID" class="table table-responsive">
+                                                <thead>
+                                                    <tr id="TrViewDetailsShowID">
+                                                        <th>
+                                                            Wind
+                                                        </th>
+                                                        <th>
+                                                            Humidity
+                                                        </th>
+                                                        <th>
+                                                            Visibility
+                                                        </th>
+                                                        <th>
+                                                            Pressure
+                                                        </th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr id="TrViewDetailsBodyID">
+                                                        <td>
+                                                            4mph
+                                                        </td>
+                                                        <td>
+                                                            83%
+                                                        </td>
+                                                        <td>
+                                                            8.37mi
+                                                        </td>
+                                                        <td>
+                                                            1012.6mb
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </td>
+                                </tr>
+ <!--a new td-->
+                            <tr>
+                                <td>
+                                    10:00 PM
+                                </td>
+                                <td>
+                                    pic
+                                </td>
+                                <td>
+                                    0%
+                                </td>
+                                <td>
+                                    70.28
+                                </td>
+                                <td>
+                                    <a href="#collapseTwo" data-toggle="collapse" aria-expanded="false"><span class="glyphicon glyphicon-plus"></span></a>
+                                </td>
+                            </tr>
+                            <tr id='collapseTwo' class="collapse out">
+                                <td class="TdCollapseID" colspan="5">
+                                    <div class="collapsePart" class="DivCollapsePart">
+                                        <table class="TableCollapseResponsiveID table table-responsive">
+                                            <thead>
+                                            <tr class="TrViewDetailsShowID">
+                                                <th>
+                                                    Wind
+                                                </th>
+                                                <th>
+                                                    Humidity
+                                                </th>
+                                                <th>
+                                                    Visibility
+                                                </th>
+                                                <th>
+                                                    Pressure
+                                                </th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            <tr class="TrViewDetailsBodyID">
+                                                <td>
+                                                    4mph
+                                                </td>
+                                                <td>
+                                                    83%
+                                                </td>
+                                                <td>
+                                                    8.37mi
+                                                </td>
+                                                <td>
+                                                    1012.6mb
+                                                </td>
+                                            </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
                                 </td>
                             </tr>
                         </tbody>

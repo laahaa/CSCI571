@@ -60,19 +60,48 @@ td.leftTd{
     width: 50%;
 }
 
+div#Next24Hours{
+    margin-bottom: 20px;
+}
 div#DivNext24HoursTabID {
     padding-left: 0px;
     padding-right: 0px;
     background-color: white;
     text-align: center;
 }
-
-tr#Thead24TableID{
+table#Table24HoursID{
+    margin-bottom: 0px;
+}
+table#Table24HoursID > tbody > tr > td{
+    padding-bottom: 12px;
+}
+tr#Tr24TableID{
     background-color: rgb(48,113,169);
     color: white;
 }
 th{
     text-align: center;
 }
+img.Next24HoursImg{
+    width: 45px;
+}
 
 
+td#TdCollapseID{
+    background-color: rgb(240,240,240);
+}
+table.TableCollapseResponsiveID{
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-top: 10px;
+    width: 98%;
+}
+div.collapsePart{
+    overflow: auto;
+}
+tr.TrViewDetailsShowID{
+    background-color: white;
+}
+tr.TrViewDetailsBodyID{
+    background-color: rgb(240,240,240);
+}

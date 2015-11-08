@@ -288,22 +288,112 @@ function ShowWeather(phpReturn){
     "</div>";
 
     //second tab content
-    var time = new Array();
-    time[0] = phpReturn.hourly.data[0].time;
-    var summary = new Array();
-    summary[0] = phpReturn.hourly.data[0].icon;
-    var cloudCover = new Array();
-    cloudCover[0] = phpReturn.hourly.data[0].cloudCover;
-    var temp = new Array();
-    temp[0] = phpReturn.hourly.data[0].temperature;
-    var viewDetails = "";
+    var time = new Array(24);
+    var DateTime = "";
+    var DateTimeHour = "";
+    var DateTimeMinute = "";
+    var summaryArray = new Array(24);
+    var SummaryIconArray = new Array(24);
+    var cloudCoverArray = new Array(24);
+    var tempArray = new Array(24);
+    var viewDetails = "<span class='glyphicon glyphicon-plus'></span>";
+    var windArray = new Array(24);
+    var HumidityArray = new Array(24);
+    var VisibilityArray = new Array(24);
+    var PressureArray = new Array(24);
+
+    var LoopPartArray = new Array(24);
+
+    for(var i = 0; i < 6; i++ ){
+        time[i] = phpReturn.hourly.data[i+1].time;
+        DateTime = new Date(time[i]*1000);
+        DateTimeHour = DateTime.getHours();
+        if(DateTimeHour < 10){
+            DateTimeHour = '0' + DateTimeHour;
+        }
+        DateTimeMinute = DateTime.getMinutes();
+        if(DateTimeMinute < 10 && DateTimeHour < 12){
+            DateTimeMinute = '0' + DateTimeMinute + " AM";
+        }
+        else{
+            DateTimeMinute = '0' + DateTimeMinute + " PM";
+        }
+        summaryArray[i] = phpReturn.hourly.data[i+1].icon;
+        SummaryIconArray[i] = get(summaryArray[i]);
+        cloudCoverArray[i] = Math.round(phpReturn.hourly.data[i+1].cloudCover * 100);
+        tempArray[i] = (phpReturn.hourly.data[i+1].temperature).toFixed(2);
+        windArray[i] = phpReturn.hourly.data[i+1].windSpeed;
+        HumidityArray[i] = phpReturn.hourly.data[i+1].humidity * 100;
+        VisibilityArray[i] = phpReturn.hourly.data[i+1].visibility;
+        PressureArray[i] = phpReturn.hourly.data[i+1].pressure;
+
+        LoopPartArray[i] +=
+            "<tr>" +
+                "<td>" +
+                    DateTimeHour + ":" + DateTimeMinute +
+                "</td>" +
+                "<td>" +
+                    "<img class='Next24HoursImg' alt='" + summaryArray[i] +"'src='http://cs-server.usc.edu:45678/hw/hw8/images/" + SummaryIconArray[i] +"'>" +
+                "</td>" +
+                "<td>" +
+                    cloudCoverArray[i] + "%" +
+                "</td>" +
+                "<td>" +
+                    tempArray[i] +
+                "</td>" +
+                "<td>" +
+                    "<a href='#collapse" + i +"' data-toggle='collapse' aria-expanded='false'>" +viewDetails + "</a>" +
+                "</td>" +
+            "</tr>" +
+            "<tr id='collapse"+ i +"' class='collapse out'>" +
+                "<td id='TdCollapseID' colspan='5'>" +
+                    "<div class='collapsePart'>" +
+                        "<table class='TableCollapseResponsiveID table table-responsive'>" +
+                            "<thead>" +
+                                "<tr class='TrViewDetailsShowID'>" +
+                                    "<th>" +
+                                        "Wind" +
+                                    "</th>" +
+                                    "<th>" +
+                                        "Humidity" +
+                                    "</th>" +
+                                    "<th>" +
+                                        "Visibility" +
+                                    "</th>" +
+                                    "<th>" +
+                                        "Pressure" +
+                                    "</th>" +
+                                "</tr>" +
+                            "</thead>" +
+                            "<tbody>" +
+                                "<tr class='TrViewDetailsBodyID'>" +
+                                    "<td>" +
+                                        windArray[i] + windSpeed_unit +
+                                    "</td>" +
+                                    "<td>" +
+                                        HumidityArray[i] + "%" +
+                                    "</td>" +
+                                    "<td>" +
+                                        VisibilityArray[i] + visibility_unit +
+                                    "</td>" +
+                                    "<td>" +
+                                        PressureArray[i] + pressure_unit +
+                                    "</td>" +
+                                "</tr>" +
+                            "</tody>" +
+                        "</table>" +
+                    "</div>" +
+                "</td>" +
+            "</tr>";
+    }
+
 
     Next24HoursTable +=
     "<div class='tab-content container' id='DivNext24HoursTabID'>" +
         "<div role='tabpanel' class='tab-pane active' id='Next24Hours'>" +
             "<table class='table table-responsive' id='Table24HoursID'>" +
                 "<thead>" +
-                    "<tr id='Thead24TableID'>" +
+                    "<tr id='Tr24TableID'>" +
                         "<th class='headFor24'>" +
                             "Time" +
                         "</th>" +
@@ -320,31 +410,19 @@ function ShowWeather(phpReturn){
                             "View"+ " " + "Details" +
                         "</th>" +
                     "</tr>" +
-                "</thead>" +
-                "<tbody>" +
-                    "<tr>" +
+                    "<tr name='DivideTheadAndTbody'>" +
                         "<td>" +
-                            time[0] +
-                        "</td>" +
-                        "<td>" +
-                            summary[0] +
-                        "</td>" +
-                        "<td>" +
-                            cloudCover[0] +
-                        "</td>" +
-                        "<td>" +
-                            temp[0] +
-                        "</td>" +
-                        "<td>" +
-                            "<span class='glyphicon glyphicon-plus'></span>" +
+                            "<div>" +
+
+                            "</div>" +
                         "</td>" +
                     "</tr>" +
-                "</tbody>" +
-            "</table>" +
-        "</div>";
+                "</thead>" +
+                "<tbody id='TbodyBiggerID'>" + LoopPartArray + "</tbody>" + "</table>" + "</div>";
+
 
     Next7DaysModal +=
-        "to be continued";
+        "";
 //start tab part
     TabPart +=
         "<ul class='nav nav-tabs' role='tablist'>" +
