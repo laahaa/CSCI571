@@ -1,4 +1,5 @@
 <?php
+    header("Access-Control-Allow-Origin:*","Content-Type:application/json");
     $streetAddress = $_GET["StreetAddress"];
     $city = $_GET["City"];
     $state = $_GET["State"];

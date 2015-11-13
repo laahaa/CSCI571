@@ -1,9 +1,16 @@
+p.errorMessage{
+    color: rgb(183,68,66);
+}
+/*for the result part*/
 div#DivResultID{
-    padding-left: 0px;
-    padding-right: 0px;
+    padding-left: 15px;
+    padding-right: 15px;
+    margin-left: auto;
+    margin-right: auto;
 }
 div#DivRightNowL6ID{
     padding-right: 0px;
+    padding-left: 0px;
 }
 div#DivMapR6ID{
     padding-left: 0px;
@@ -19,7 +26,16 @@ ul.nav-tabs li.active a{
     border: solid 1px white;
     color: white;
 }
-
+@media (max-width: 370px) {
+    ul.nav > li >a{
+        padding-left: 5px;
+        padding-right: 5px;
+    }
+}
+div#DivRowBelowUlID{
+    margin-left: 0px;
+    margin-right: 0px;
+}
 div#DivIconAndWeatherID{
     background-color: rgb(242,126,127);
     margin-left: 0px;
@@ -36,6 +52,7 @@ img#DisplayedIconID{
 }
 div#Div3PartsID{
     text-align: center;
+    position: relative;
 }
 p#PWeatherConditionID{
     color: white;
@@ -47,30 +64,60 @@ div#Div3MiddleID{
 }
 div#Div3MiddleID span{
     position: relative;
-    top: -27px;
+    top: -42px;
     right: 0px;
 }
 p#P3MiddleID{
     color: white;
+    margin-bottom: 0px;
 }
 b#BigNumberID{
-    font-size: 55px;
+    font-size: 75px;
 }
+div#Div3BottomID{
+    text-align: center;
+    vertical-align: bottom;
+    padding-bottom: 7px;
+}
+
+div#Div3PartsID button{
+    position: absolute;
+    top: 125px;
+    right: 10px;
+    background-color: rgb(242,126,127);
+    padding: 0px;
+}
+img#facebookLogo{
+    width: 30px;
+    height: 30px;
+}
+/*table of first tab*/
 td.leftTd{
     width: 50%;
 }
-
-div#Next24Hours{
+div#map{
+    width: 100%;
+    height: 460px;
+    border: solid white 2px;
+    padding: 0px;
+    position: absolute;
     margin-bottom: 20px;
 }
+
+/*second tab */
 div#DivNext24HoursTabID {
     padding-left: 0px;
     padding-right: 0px;
-    background-color: white;
     text-align: center;
 }
+div#Next24Hours{
+     margin-bottom: 20px;
+     background-color: white;
+     overflow: scroll;
+ }
 table#Table24HoursID{
     margin-bottom: 0px;
+    border-collapse: collapse;
 }
 table#Table24HoursID > tbody > tr > td{
     padding-bottom: 12px;
@@ -86,7 +133,6 @@ img.Next24HoursImg{
     width: 45px;
 }
 
-
 td#TdCollapseID{
     background-color: rgb(240,240,240);
 }
@@ -96,12 +142,96 @@ table.TableCollapseResponsiveID{
     margin-top: 10px;
     width: 98%;
 }
-div.collapsePart{
-    overflow: auto;
-}
 tr.TrViewDetailsShowID{
     background-color: white;
 }
 tr.TrViewDetailsBodyID{
     background-color: rgb(240,240,240);
+}
+
+/*third tab*/
+@media (min-width: 981px) {
+    div#Next7Days{
+        background-color: black;
+    }
+}
+@media (max-width: 980px) {
+    div#Next7Days{
+        background-color: transparent;
+    }
+}
+
+div#DivNext7DaysTabID{
+    padding-left: 0px;
+    padding-right: 0px;
+}
+div#Div7DaysContainer{
+    padding-left: 15px;
+    padding-right: 15px;
+}
+div#Div7DaysRow{
+    margin-left: 0px;
+    margin-right: 0px;
+}
+div.sevenModalsMd1{
+    padding-left: 6px;
+    padding-right: 6px;
+}
+div.SevenModalsClass{
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+div#SevenModal0ID{
+    background-color: rgb(54,125,181);
+}
+div#SevenModal1ID{
+    background-color: rgb(236,68,68);
+}
+div#SevenModal2ID{
+    background-color: rgb(230,142,79);
+}
+div#SevenModal3ID{
+    background-color: rgb(167,164,57);
+}
+div#SevenModal4ID{
+    background-color: rgb(151,112,167);
+}
+div#SevenModal5ID{
+    background-color: rgb(243,124,126);
+}
+div#SevenModal6ID{
+    background-color: rgb(206,69,113);
+}
+table.SevenModalTable{
+    text-align: center;
+    color: white;
+    padding-right: 0px;
+    width: 100%;
+}
+p.pDateInMadal{
+    font-size: small;
+    font-weight: bold;
+}
+img.Next7DaysImg{
+    width: 66px;
+}
+p.pTextOfTempInMadal{
+    margin-bottom: 0px;
+}
+p.pNumOfTempInMadal{
+    margin-top: 10px;
+    font-size: 30px;
+    font-weight: bold;
+}
+/*modal part*/
+img.Next7DaysModalImg{
+    width: 30%;
+}
+div.blackyellow{
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+p.ModalTitleText{
+    font-size: 17px;
+    font-weight: 500;
 }

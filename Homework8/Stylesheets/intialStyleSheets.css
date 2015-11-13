@@ -12,6 +12,8 @@ div#DivContentID{
     background: rgba(79,79,79,0.44);
     padding-left: 15px;
     padding-right: 15px;
+    margin-left: auto;
+    margin-right: auto;
 }
 div#DivStreetAddress,#DivCity,#DivState{
     padding-left: 1px;
@@ -52,6 +54,7 @@ span#ClearButtonTextID{
 div#DivLogoPartID{
     margin-left: 4px;
     margin-right: 0px;
+    padding-bottom: 15px;
 }
 div#DivPoweredByID{
     padding-left: 0px;
@@ -62,17 +65,17 @@ div#DivPoweredByID{
 p#PoweredID{
     font-size: small;
     color: white;
-    padding-top: 19px;
+    padding-top: 27px;
 }
 img#ForecastLogoID{
     padding-top: 5px;
-    width: 60%;
-    height: 50%;
+    width: 107px;
+    height: 65px;
 }
 
 /*Table part is above*/
 div#WhiteLineID{
-    width: 1170px;
+    width: auto;
     margin-left: auto;
     margin-right: auto;
 }
